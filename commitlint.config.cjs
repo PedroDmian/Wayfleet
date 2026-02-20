@@ -12,7 +12,7 @@ module.exports = {
       'always',
       (parsed) => {
         const headerRegex =
-          /^(((feat|fix|perf|chore|ci|docs|refactor|revert|style|test|build)): (.+){10,})$/;
+          /^(feat|fix|perf|chore|ci|docs|refactor|revert|style|test|build)(\(.+\))?: (.+){10,}$/;
         const isHeaderValid = parsed.header.match(headerRegex);
         if (isHeaderValid) {
           return [true];
