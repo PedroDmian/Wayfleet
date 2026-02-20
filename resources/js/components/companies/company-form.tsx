@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import InputError from '@/components/input-error';
+import { AvatarUpload } from '@/components/avatar-upload';
 
 import CompanyStoreController from '@/actions/App/Http/Controllers/Company/CompanyStoreController';
 import CompanyUpdateController from '@/actions/App/Http/Controllers/Company/CompanyUpdateController';
@@ -53,6 +54,16 @@ export default function CompanyForm({
   return (
     <form onSubmit={submit} className="space-y-6">
       <div className="grid gap-2">
+        <Label htmlFor="logo">Logo de la empresa (Opcional)</Label>
+        <AvatarUpload
+          defaultValue={company?.logo}
+          onImageCropped={(file: File) => setData('logo', file)}
+          error={errors.logo}
+        />
+        <InputError message={errors.logo} className="mt-2" />
+      </div>
+
+      <div className="grid gap-2">
         <Label htmlFor="name">Nombre de la empresa</Label>
         <Input
           id="name"
@@ -76,31 +87,6 @@ export default function CompanyForm({
           onChange={(e) => setData('description', e.target.value)}
         />
         <InputError message={errors.description} className="mt-2" />
-      </div>
-
-      <div className="grid gap-2">
-        <Label htmlFor="logo">Logo (Opcional)</Label>
-        {company?.logo && (
-          <div className="mb-2">
-            <p className="mb-1 text-sm text-gray-500">Logo actual:</p>
-            <img
-              src={`/storage/${company.logo}`}
-              alt="Current logo"
-              className="h-16 w-16 rounded-lg object-cover"
-            />
-          </div>
-        )}
-        <Input
-          id="logo"
-          type="file"
-          name="logo"
-          className="mt-1 block w-full"
-          onChange={(e) =>
-            setData('logo', e.target.files ? e.target.files[0] : null)
-          }
-          accept="image/*"
-        />
-        <InputError message={errors.logo} className="mt-2" />
       </div>
 
       <div className="flex items-center gap-4">
