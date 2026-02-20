@@ -1,7 +1,14 @@
 import { useState, useCallback } from 'react';
-import Cropper, { Area, Point } from 'react-easy-crop';
+import type { Area, Point } from 'react-easy-crop';
+import Cropper from 'react-easy-crop';
 import { Button } from './ui/button';
-import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from './ui/dialog';
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from './ui/dialog';
 
 interface ImageCropperProps {
   image: string;
@@ -26,9 +33,11 @@ export function ImageCropper({
 
   const onZoomChange = (zoom: number) => setZoom(zoom);
 
-  const onCropCompleteInternal = useCallback((_croppedArea: Area, croppedAreaPixels: Area) => 
-    setCroppedAreaPixels(croppedAreaPixels), 
-  []);
+  const onCropCompleteInternal = useCallback(
+    (_croppedArea: Area, croppedAreaPixels: Area) =>
+      setCroppedAreaPixels(croppedAreaPixels),
+    [],
+  );
 
   const createImage = (url: string): Promise<HTMLImageElement> =>
     new Promise((resolve, reject) => {
@@ -43,7 +52,7 @@ export function ImageCropper({
 
   const getCroppedImg = async (
     imageSrc: string,
-    pixelCrop: Area
+    pixelCrop: Area,
   ): Promise<Blob> => {
     const image = await createImage(imageSrc);
     const canvas = document.createElement('canvas');
@@ -65,7 +74,7 @@ export function ImageCropper({
       0,
       0,
       pixelCrop.width,
-      pixelCrop.height
+      pixelCrop.height,
     );
 
     return new Promise((resolve, reject) => {
@@ -97,7 +106,7 @@ export function ImageCropper({
         <DialogHeader>
           <DialogTitle>Ajustar imagen</DialogTitle>
         </DialogHeader>
-        <div className="relative h-[300px] w-full bg-neutral-200 dark:bg-neutral-800 rounded-md overflow-hidden">
+        <div className="relative h-[300px] w-full overflow-hidden rounded-md bg-neutral-200 dark:bg-neutral-800">
           <Cropper
             image={image}
             crop={crop}
@@ -109,7 +118,9 @@ export function ImageCropper({
           />
         </div>
         <div className="mt-4 flex flex-col gap-2">
-          <p className="text-xs text-neutral-500">Usa la rueda del ratón o el scroll para hacer zoom.</p>
+          <p className="text-xs text-neutral-500">
+            Usa la rueda del ratón o el scroll para hacer zoom.
+          </p>
         </div>
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)}>

@@ -9,10 +9,10 @@ use Inertia\Response;
 
 class CompanyEditController extends Controller
 {
-  public function __invoke(Company $company): Response
-  {
-    return Inertia::render('companies/edit', [
-      'company' => $company,
-    ]);
-  }
+    public function __invoke(Company $company): Response
+    {
+        return Inertia::render('companies/edit', [
+            'company' => $company,
+        ]);
+    }
 }

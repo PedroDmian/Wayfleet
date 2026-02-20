@@ -1,14 +1,13 @@
 import { Head } from '@inertiajs/react';
 import { ChevronLeft } from 'lucide-react';
 
-import { Button } from '@/components/ui/button';
-import CompanyForm from '@/components/companies/company-form';
-
-import CompanyIndexController from '@/actions/App/Http/Controllers/Company/CompanyIndexController';
 import CompanyCreateController from '@/actions/App/Http/Controllers/Company/CompanyCreateController';
+import CompanyIndexController from '@/actions/App/Http/Controllers/Company/CompanyIndexController';
+import CompanyForm from '@/components/companies/company-form';
+import { Button } from '@/components/ui/button';
 
 import AppLayout from '@/layouts/app-layout';
-import { BreadcrumbItem } from '@/types';
+import type { BreadcrumbItem } from '@/types';
 
 const breadcrumbs: BreadcrumbItem[] = [
   {
@@ -35,9 +34,9 @@ export default function Create() {
               Agrega una nueva compañia al sistema.
             </p>
           </div>
-          <Button 
-            size="sm" 
-            className="btn bg-gray-100 hover:bg-gray-200 text-gray-500 dark:text-gray-600"
+          <Button
+            size="sm"
+            className="btn bg-gray-100 text-gray-500 hover:bg-gray-200 dark:text-gray-600"
             onClick={() => history.back()}
           >
             <ChevronLeft className="h-4 w-4" />

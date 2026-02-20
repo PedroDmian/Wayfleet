@@ -8,8 +8,8 @@ use Inertia\Response;
 
 class CompanyCreateController extends Controller
 {
-  public function __invoke(): Response
-  {
-    return Inertia::render('companies/create');
-  }
+    public function __invoke(): Response
+    {
+        return Inertia::render('companies/create');
+    }
 }

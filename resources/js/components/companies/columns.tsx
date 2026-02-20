@@ -1,13 +1,11 @@
-'use client';
-
-import { ColumnDef } from '@tanstack/react-table';
 import { Link, router } from '@inertiajs/react';
+import type { ColumnDef } from '@tanstack/react-table';
 import { Pencil, Trash2 } from 'lucide-react';
 
-import CompanyEditController from '@/actions/App/Http/Controllers/Company/CompanyEditController';
-import CompanyDeleteController from '@/actions/App/Http/Controllers/Company/CompanyDeleteController';
-import { Button } from '@/components/ui/button';
 import { sileo } from 'sileo';
+import CompanyDeleteController from '@/actions/App/Http/Controllers/Company/CompanyDeleteController';
+import CompanyEditController from '@/actions/App/Http/Controllers/Company/CompanyEditController';
+import { Button } from '@/components/ui/button';
 
 export type Company = {
   id: number;
@@ -23,7 +21,7 @@ export const columns: ColumnDef<Company>[] = [
   {
     accessorKey: 'logo',
     header: 'Logo',
-    cell: ({ row }: { row: any }) => {
+    cell: ({ row }) => {
       const company = row.original;
 
       return company.logo ? (
@@ -42,7 +40,7 @@ export const columns: ColumnDef<Company>[] = [
   {
     accessorKey: 'name',
     header: 'Nombre de Compañia',
-    cell: ({ row }: { row: any }) => {
+    cell: ({ row }) => {
       return (
         <span className="font-medium text-gray-900 dark:text-white">
           {row.getValue('name')}
@@ -53,7 +51,7 @@ export const columns: ColumnDef<Company>[] = [
   {
     accessorKey: 'description',
     header: 'Descripción',
-    cell: ({ row }: { row: any }) => {
+    cell: ({ row }) => {
       const desc = row.getValue('description') as string | null;
       if (!desc) {
         return <span className="text-gray-400 italic">Sin descripción</span>;
@@ -66,7 +64,7 @@ export const columns: ColumnDef<Company>[] = [
   {
     id: 'actions',
     header: () => <div className="text-right">Acciones</div>,
-    cell: ({ row }: { row: any }) => {
+    cell: ({ row }) => {
       const company = row.original;
 
       const handleDelete = () => {

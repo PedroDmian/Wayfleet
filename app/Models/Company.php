@@ -11,11 +11,12 @@ class Company extends Model
     use HasFactory, SoftDeletes;
 
     protected $table = 'companies';
+
     protected $fillable = [
         'name',
         'slug',
         'description',
-        'logo'
+        'logo',
     ];
 
     protected $casts = [

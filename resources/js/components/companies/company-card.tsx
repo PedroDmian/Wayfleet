@@ -1,11 +1,5 @@
 import { Link, router } from '@inertiajs/react';
 import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from '@/components/ui/card';
-import {
   MapPin,
   Briefcase,
   Users,
@@ -15,16 +9,22 @@ import {
   Trash2,
   Building2,
 } from 'lucide-react';
+import { sileo } from 'sileo';
+import CompanyDeleteController from '@/actions/App/Http/Controllers/Company/CompanyDeleteController';
+import CompanyEditController from '@/actions/App/Http/Controllers/Company/CompanyEditController';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from '@/components/ui/card';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Button } from '@/components/ui/button';
-import CompanyEditController from '@/actions/App/Http/Controllers/Company/CompanyEditController';
-import CompanyDeleteController from '@/actions/App/Http/Controllers/Company/CompanyDeleteController';
-import { sileo } from 'sileo';
 
 export type Company = {
   id: number;

@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid, Factory } from 'lucide-react';
+import { LayoutGrid, Factory } from 'lucide-react';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
@@ -12,9 +12,9 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
+import { dashboard, companies } from '@/routes';
 import type { NavItem } from '@/types';
 import AppLogo from './app-logo';
-import { dashboard, companies } from '@/routes';
 import AppearanceToggleTab from './appearance-tabs';
 
 const mainNavItems: NavItem[] = [

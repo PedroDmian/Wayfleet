@@ -8,12 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Country extends Model
 {
     use SoftDeletes;
+
     protected $table = 'countries';
+
     protected $fillable = [
         'name',
         'key',
         'updated_by',
-        'created_by'
+        'created_by',
     ];
 
     public function states()

@@ -10,15 +10,14 @@ use Illuminate\Http\RedirectResponse;
 
 class CompanyUpdateController extends Controller
 {
-  public function __construct(
-    protected UpdateCompanyAction $action
-  ) {
-  }
+    public function __construct(
+        protected UpdateCompanyAction $action
+    ) {}
 
-  public function __invoke(UpdateCompanyRequest $request, Company $company): RedirectResponse
-  {
-    $this->action->execute($company, $request->validated() + ['logo' => $request->file('logo')]);
+    public function __invoke(UpdateCompanyRequest $request, Company $company): RedirectResponse
+    {
+        $this->action->execute($company, $request->validated() + ['logo' => $request->file('logo')]);
 
-    return to_route('companies')->with('success', 'Company updated successfully.');
-  }
+        return to_route('companies')->with('success', 'Company updated successfully.');
+    }
 }

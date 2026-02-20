@@ -1,21 +1,21 @@
-import { useState, useEffect, useRef } from 'react';
 import { Head, Link, router } from '@inertiajs/react';
-import AppLayout from '@/layouts/app-layout';
-import { BreadcrumbItem } from '@/types';
-
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
-import AppearanceTabs from '@/components/appearance-tabs';
-import ViewToggle, { ViewType } from '@/components/view-toggle';
+import { useState, useEffect, useRef } from 'react';
+import CompanyCreateController from '@/actions/App/Http/Controllers/Company/CompanyCreateController';
+import CompanyIndexController from '@/actions/App/Http/Controllers/Company/CompanyIndexController';
+import { Button } from '@/components/ui/button';
 import { DataTable } from '@/components/ui/data-table';
+import { Input } from '@/components/ui/input';
+import type { ViewType } from '@/components/view-toggle';
+import ViewToggle from '@/components/view-toggle';
+import AppLayout from '@/layouts/app-layout';
+import { cleanLabel } from '@/lib/utils';
+import type { BreadcrumbItem } from '@/types';
+
 import { columns } from '../../components/companies/columns';
 
-import CompanyIndexController from '@/actions/App/Http/Controllers/Company/CompanyIndexController';
-import CompanyCreateController from '@/actions/App/Http/Controllers/Company/CompanyCreateController';
-
-import CompanyCard, { Company } from '../../components/companies/company-card';
-import { cleanLabel } from '@/lib/utils';
+import type { Company } from '../../components/companies/company-card';
+import CompanyCard from '../../components/companies/company-card';
 
 const breadcrumbs: BreadcrumbItem[] = [
   {
@@ -28,8 +28,11 @@ export default function Index({
   companies,
   filters,
 }: {
-  companies: any;
-  filters?: any;
+  companies: {
+    data: Company[];
+    links: { url: string | null; label: string; active: boolean }[];
+  };
+  filters?: { search?: string };
 }) {
   const [view, setView] = useState<ViewType>('grid');
   const [search, setSearch] = useState(filters?.search || '');
@@ -99,7 +102,7 @@ export default function Index({
         {companies.links && companies.links.length > 3 && (
           <div className="mt-4 flex justify-center pb-4">
             <div className="flex items-center gap-1">
-              {companies.links.map((link: any, index: number) => (
+              {companies.links.map((link, index) => (
                 <Link
                   key={index}
                   href={link.url || '#'}

@@ -10,12 +10,13 @@ class Municipality extends Model
     use SoftDeletes;
 
     protected $table = 'municipalities';
+
     protected $fillable = [
         'name',
         'key',
         'state_id',
         'updated_by',
-        'created_by'
+        'created_by',
     ];
 
     public function state()

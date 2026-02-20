@@ -9,15 +9,14 @@ use Illuminate\Http\RedirectResponse;
 
 class CompanyDeleteController extends Controller
 {
-  public function __construct(
-    protected DeleteCompanyAction $action
-  ) {
-  }
+    public function __construct(
+        protected DeleteCompanyAction $action
+    ) {}
 
-  public function __invoke(Company $company): RedirectResponse
-  {
-    $this->action->execute($company);
+    public function __invoke(Company $company): RedirectResponse
+    {
+        $this->action->execute($company);
 
-    return to_route('companies')->with('success', 'Company deleted successfully.');
-  }
+        return to_route('companies')->with('success', 'Company deleted successfully.');
+    }
 }

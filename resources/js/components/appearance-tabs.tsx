@@ -10,7 +10,7 @@ export default function AppearanceToggleTab({
   icons = true,
   text = true,
   ...props
-}: HTMLAttributes<HTMLDivElement> & { icons?: boolean, text?: boolean }) {
+}: HTMLAttributes<HTMLDivElement> & { icons?: boolean; text?: boolean }) {
   const { appearance, updateAppearance } = useAppearance();
 
   const tabs: { value: Appearance; icon: LucideIcon; label: string }[] = [

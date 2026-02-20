@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('states', function (Blueprint $table) {
             $table->id();
-            $table->string('key',2)->nullable();
-            $table->string('name',45)->nullable();
-            $table->string('abrev',16)->nullable();
+            $table->string('key', 2)->nullable();
+            $table->string('name', 45)->nullable();
+            $table->string('abrev', 16)->nullable();
 
             $table->unsignedBigInteger('country_id');
             $table->unsignedBigInteger('updated_by')->nullable();

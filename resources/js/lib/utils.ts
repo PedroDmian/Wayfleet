@@ -11,5 +11,7 @@ export function toUrl(url: NonNullable<InertiaLinkProps['href']>): string {
 }
 
 export function cleanLabel(label: string): string {
-  return label.replace('&laquo; Previous', 'Anterior').replace('Next &raquo;', 'Siguiente');
-};
+  return label
+    .replace('&laquo; Previous', 'Anterior')
+    .replace('Next &raquo;', 'Siguiente');
+}

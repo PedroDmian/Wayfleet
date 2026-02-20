@@ -2,14 +2,13 @@ import { Transition } from '@headlessui/react';
 import { useForm } from '@inertiajs/react';
 import { sileo } from 'sileo';
 
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Button } from '@/components/ui/button';
-import InputError from '@/components/input-error';
-import { AvatarUpload } from '@/components/avatar-upload';
-
 import CompanyStoreController from '@/actions/App/Http/Controllers/Company/CompanyStoreController';
 import CompanyUpdateController from '@/actions/App/Http/Controllers/Company/CompanyUpdateController';
+import { AvatarUpload } from '@/components/avatar-upload';
+import InputError from '@/components/input-error';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
 interface CompanyFormProps {
   company?: {

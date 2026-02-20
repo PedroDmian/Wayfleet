@@ -10,15 +10,16 @@ class State extends Model
     use SoftDeletes;
 
     protected $table = 'states';
+
     protected $fillable = [
         'name',
         'key',
         'country_id',
         'updated_by',
-        'created_by'
+        'created_by',
     ];
 
-	public function country()
+    public function country()
     {
         return $this->belongsTo(Country::class);
     }

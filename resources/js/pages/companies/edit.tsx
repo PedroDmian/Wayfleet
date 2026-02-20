@@ -1,14 +1,14 @@
 import { Head } from '@inertiajs/react';
 import { ChevronLeft } from 'lucide-react';
 
-import CompanyIndexController from '@/actions/App/Http/Controllers/Company/CompanyIndexController';
 import CompanyEditController from '@/actions/App/Http/Controllers/Company/CompanyEditController';
+import CompanyIndexController from '@/actions/App/Http/Controllers/Company/CompanyIndexController';
 
-import { Button } from '@/components/ui/button';
 import CompanyForm from '@/components/companies/company-form';
+import { Button } from '@/components/ui/button';
 
 import AppLayout from '@/layouts/app-layout';
-import { BreadcrumbItem } from '@/types';
+import type { BreadcrumbItem } from '@/types';
 interface Company {
   id: number;
   name: string;
@@ -42,9 +42,9 @@ export default function Edit({ company }: { company: Company }) {
               Actualiza los datos de la compañia.
             </p>
           </div>
-          <Button 
-            size="sm" 
-            className="btn bg-gray-100 hover:bg-gray-200 text-gray-500 dark:text-gray-600"
+          <Button
+            size="sm"
+            className="btn bg-gray-100 text-gray-500 hover:bg-gray-200 dark:text-gray-600"
             onClick={() => history.back()}
           >
             <ChevronLeft className="h-4 w-4" />

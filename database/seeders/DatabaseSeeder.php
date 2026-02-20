@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-
 use Database\Seeders\Shared\CountriesSeeder;
-use Database\Seeders\Shared\StatesSeeder;
 use Database\Seeders\Shared\MunicipalitiesSeeder;
+use Database\Seeders\Shared\StatesSeeder;
+use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
